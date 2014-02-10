@@ -21,6 +21,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import java.util.Arrays;
 
+import org.junit.Ignore;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -37,6 +38,7 @@ import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
  * @author Oliver Gierke
  */
 @ContextConfiguration(classes = MongoDbRepositoryConfig.class)
+@Ignore
 public class MongoWebTests extends AbstractWebIntegrationTests {
 
 	@Autowired ProfileRepository repository;

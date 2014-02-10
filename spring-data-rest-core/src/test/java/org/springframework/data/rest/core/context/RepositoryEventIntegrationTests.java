@@ -79,7 +79,7 @@ public class RepositoryEventIntegrationTests {
 
 	@Test(expected = RuntimeException.class)
 	public void shouldDispatchBeforeSave() throws Exception {
-		appCtx.publishEvent(new BeforeSaveEvent(person));
+		appCtx.publishEvent(new BeforeSaveEvent(person, person));
 	}
 
 	@Test(expected = RuntimeException.class)

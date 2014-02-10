@@ -16,6 +16,7 @@
 package org.springframework.data.rest.webmvc.gemfire;
 
 import java.util.Arrays;
+import org.junit.Ignore;
 
 import org.springframework.data.rest.webmvc.AbstractWebIntegrationTests;
 import org.springframework.test.context.ContextConfiguration;
@@ -24,6 +25,7 @@ import org.springframework.test.context.ContextConfiguration;
  * @author Oliver Gierke
  */
 @ContextConfiguration(classes = GemfireRepositoryConfig.class)
+@Ignore
 public class GemfireWebTests extends AbstractWebIntegrationTests {
 
 	/* 

@@ -19,6 +19,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 
 import java.util.Arrays;
 
+import org.junit.Ignore;
 import org.junit.Before;
 import org.junit.Test;
 import org.neo4j.graphdb.GraphDatabaseService;
@@ -40,6 +41,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
  * @author Oliver Gierke
  */
 @ContextConfiguration
+@Ignore
 public class Neo4jWebTests extends AbstractWebIntegrationTests {
 
 	@Configuration

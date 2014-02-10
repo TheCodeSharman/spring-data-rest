@@ -62,6 +62,6 @@ public class ValidatorIntegrationTests {
 
 	@Test(expected = RepositoryConstraintViolationException.class)
 	public void shouldValidateLastName() throws Exception {
-		context.publishEvent(new BeforeSaveEvent(new Person()));
+		context.publishEvent(new BeforeSaveEvent(new Person(),new Person()));
 	}
 }

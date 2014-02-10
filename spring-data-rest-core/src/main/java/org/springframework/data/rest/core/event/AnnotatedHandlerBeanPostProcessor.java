@@ -57,6 +57,8 @@ public class AnnotatedHandlerBeanPostProcessor implements ApplicationListener<Re
 					params.add(((BeforeLinkSaveEvent) event).getLinked());
 				} else if (event instanceof AfterLinkSaveEvent) {
 					params.add(((AfterLinkSaveEvent) event).getLinked());
+				} else if (event instanceof BeforeSaveEvent) {
+					params.add(((BeforeSaveEvent) event).getExisting());
 				}
 
 				if (LOG.isDebugEnabled()) {
