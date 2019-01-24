@@ -270,10 +270,20 @@ class RepositoryEntityController extends AbstractRepositoryRestController implem
 		Object domainObject = conversionService.convert(id, resourceInformation.getDomainType());
 		RepositoryInvoker invoker = resourceInformation.getInvoker();
 
+<<<<<<< HEAD
 		if (domainObject == null) {
 
 			BeanWrapper<?, Object> incomingWrapper = BeanWrapper.create(payload.getContent(), conversionService);
 			incomingWrapper.setProperty(payload.getPersistentEntity().getIdProperty(), id);
+=======
+		publisher.publishEvent(new BeforeSaveEvent(incoming.getContent(), domainObj));
+		
+		domainObjectMerger.merge(incoming.getContent(), domainObj);
+
+		
+		Object obj = invoker.invokeSave(domainObj);
+		publisher.publishEvent(new AfterSaveEvent(obj));
+>>>>>>> a539dbf... Modfied the BeforeSaveEvent to supply both incoming and existing entities before they are merged.
 
 			return createAndReturn(incomingWrapper.getBean(), invoker);
 		}
@@ -343,13 +353,11 @@ class RepositoryEntityController extends AbstractRepositoryRestController implem
 	 */
 	private ResponseEntity<ResourceSupport> mergeAndReturn(Object incoming, Object domainObject,
 			RepositoryInvoker invoker, HttpMethod httpMethod) {
-		
-		publisher.publishEvent(new BeforeSaveEvent(incoming, domainObject));
 
 		NullHandlingPolicy nullPolicy = httpMethod.equals(PATCH) ? IGNORE_NULLS : APPLY_NULLS;
 		domainObjectMerger.merge(incoming, domainObject, nullPolicy);
 
-
+		publisher.publishEvent(new BeforeSaveEvent(domainObject));
 		Object obj = invoker.invokeSave(domainObject);
 		publisher.publishEvent(new AfterSaveEvent(domainObject));
 
